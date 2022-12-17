@@ -1,0 +1,7 @@
+Website address
+https://wuzzuf.net/search/jobs/?q=html&a=navbg
+
+Web scraping data
+اخذ بيانات وظائف html من علي موقع wuzzuf
+
+csv file

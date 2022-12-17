@@ -1,0 +1,28 @@
+import requests
+from bs4 import BeautifulSoup
+
+player_name = []
+player_country = []
+center = []
+
+#  fetch the url
+page = requests.get("https://www.365scores.com/ar/football/egypt/al-ahly-sc/team/8200/squad")
+
+# save page content
+content = page.content
+# print(content)
+
+# create soup object to parse content
+soup = BeautifulSoup(content, "html.parser")
+# print(soup)
+
+players_name = soup.find_all("div", {"class": "squad-widget_player_name__3c0K0"})
+players_country = soup.find_all("div", {"class": "squad-widget_athlete_subtext__V4Cd6"})
+play_center = soup.find_all("span", {"class": "squad-widget_athlete_position_name__21zWG"})
+
+# step loop over returned lists to extract needed info into other lists
+for i in range(len(players_name)):
+    player_name.append(players_name[i].text)
+    player_country.append(players_country[i].text)
+    center.append(play_center[i].text)
+print(player_name, player_country, center)
